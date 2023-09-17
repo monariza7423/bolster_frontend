@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+  margin: 0 auto;
+  padding: 0 4%;
+  background-color: rgb(41, 37, 37);
+}
+
+.site_logo img{
+  width: 300px;
+}
+
+// リンク作成時に削除
+nav ul li{
+  color: white;
+}
+
+.header_nav ul{
+  display: flex;
+}
+
+.header_nav li{
+  list-style: none;
+  letter-spacing: 3px;
+  padding: 50px 10px 50px 10px;
+}
+
+.header_nav li:last-child {
+  padding-right: 0;
+}
+
+.header_nav li a{
+  text-decoration: none;
+  color: white;
+}

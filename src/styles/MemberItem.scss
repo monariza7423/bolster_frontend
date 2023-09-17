@@ -1,0 +1,35 @@
+.member_item {
+  display: flex;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.text_container {
+  margin-left: 30px;
+  flex-grow: 1;
+}
+
+.member_item img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.role {
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.member_list_name {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.member_list_name :first-child {
+  font-size: 20px;
+}
+
+.member_list_name :last-child {
+  color: gray;
+}

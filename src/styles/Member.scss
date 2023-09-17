@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  display: flex; 
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.container_member {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.member_img {
+  position: relative;
+  margin-top: 60px;
+  width: 60%;
+  height: 330px;
+  overflow: hidden;
+  text-align: right;
+}
+
+.page_title {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  color: white;
+  font-size: 135px;
+  font-weight: bold;
+}
+
+.member_img img {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.member_contents {
+  margin: 0 auto;
+}
+
+.phrase {
+  padding: 0 60px;
+  font-size: 20px;
+}
+
+.member_ceo {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 90px;
+}
+
+.member_ceo img{
+  width: 400px;
+  border-radius: 50%;
+  margin-bottom: 40px;
+}
+
+.member_ceo_position {
+  position: absolute;
+  bottom: 0;
+  left: 55%;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 5px;
+}
+
+.member_cto {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 90px;
+}
+
+.member_cto img{
+  width: 400px;
+  border-radius: 50%;
+  margin-bottom: 40px;
+}
+
+.member_cto_position {
+  position: absolute;
+  bottom: 0;
+  right: 55%;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 5px;
+}
+
+.position_jp_1{
+  font-size: 25px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.position_jp_2{
+  font-size: 25px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.position_eg {
+  font-size: 160px;
+  font-weight: bold;
+  text-shadow: 
+    -1px -1px 0 #fff,  
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+}
+
+.member_introduction {
+  padding: 0 60px;
+}
+
+.member_name_eg {
+  font-size: 50px;
+  font-weight: 400;
+}
+
+.member_name_jp {
+  color: gray;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.member_detail {
+  font-size: 20px;
+}
+
+.member_list_item {
+  margin-top: 90px;
+  padding: 0 60px;
+}

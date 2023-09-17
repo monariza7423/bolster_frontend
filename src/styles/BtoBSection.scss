@@ -1,0 +1,90 @@
+.section {
+  width: 100%;
+}
+
+// 文章右側
+.service_right {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.service_right :first-child {
+  margin-top: 60px;
+}
+
+.service_right_contents {
+  width: 40%;
+  padding: 0 40px 0 30px;
+}
+
+.service_sub_title {
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: gray;
+}
+
+.service_article_title {
+  font-size: 50px;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.service_info {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.service_right_img {
+  width: 60%;
+}
+
+.service_right_img img {
+  width: 100%;
+  height: auto;
+}
+
+// 文章左側
+.service_left {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding-right: 60px;
+  background-image: url(/images/back_ground.png);
+  background-size: 100% 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 30%;
+  padding-bottom: 30%;
+}
+
+.service_left_contents {
+  width: 40%;
+  padding: 0 30px;
+}
+
+.service_left_img {
+  width: 60%;
+}
+
+.more_btn {
+  width: 100%;
+  display: inline-block;
+  padding: 30px 40px;
+  background-color: rgb(0, 229, 255);
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.more_btn img{
+  margin-left: 10px;
+  width: 30px;
+}
+
+.section {
+  width: 100%;
+}
