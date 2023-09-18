@@ -3,6 +3,7 @@ import { Header } from "../layout/Header";
 import { Footer } from "../layout/Footer";
 import '../styles/Contact.scss';
 import { ScrollToTopButton } from "../components/button/ScrollToTopButton";
+import axios from "axios";
 
 export const Contact: FC = memo(() => {
   const [ firstName, setFirstName] = useState("");
@@ -51,16 +52,34 @@ export const Contact: FC = memo(() => {
     setContent(e.target.value);
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();  // デフォルトのフォーム送信動作を防止
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
     if (email !== confirmEmail) {
-        // メールアドレスが一致しない場合のalert
         alert("メールアドレスが一致していません。");
-        return;  // 以降の送信処理を停止
+        return;
     }
 
-    // 一致している場合の送信処理をここに書く（例：APIへのPOSTリクエストなど）
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/api/contact", {
+        first_name: firstName,
+        last_name: lastName,
+        first_name_kana: firstNameKana,
+        last_name_kana: lastNameKana,
+        company: company,
+        email: email,
+        contact_type: contactType,
+        content: content
+      });
+
+      if (response.status === 200) {
+        alert("送信成功しました");
+      } else {
+        alert("送信失敗しました");
+      }
+    }catch (error) {
+      alert("問題が発生しました");
+    }
   };
 
 
@@ -90,9 +109,9 @@ export const Contact: FC = memo(() => {
             <p className="contact_info_contents_4">リモートスタイルに関してのお問い合わせは下記フォーム「お問い合わせ種類」で「事業（リモートスタイル）について」を選択してお問い合わせください。</p>
           </div>
         </div>
+
         <div className="contact_form">
-          {/* onSubmit未実装 */}
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form_item">
               <label className="label">氏名*</label>
               <input type="text" value={firstName} onChange={onChangeFirstName} className="input" placeholder="お名前 姓" />
@@ -118,11 +137,12 @@ export const Contact: FC = memo(() => {
             <div className="form_item">
               <label className="label">お問い合わせ種類</label>
               <select value={contactType} onChange={onChangeContactType} className="input">
-                  <option value="">選択してください</option>
-                  <option value="type1">タイプ1</option>
-                  <option value="type2">タイプ2</option>
-                  <option value="type3">タイプ3</option>
-                  <option value="type4">タイプ4</option>
+                <option value="">選択してください</option>
+                <option value="事業(WEB制作・開発)について">事業(WEB制作・開発)について</option>
+                <option value="事業(オハナスタイル)について">事業(オハナスタイル)について</option>
+                <option value="事業(リモートスタイル)について">事業(リモートスタイル)について</option>
+                <option value="採用について">採用について</option>
+                <option value="その他">その他</option>
               </select>
             </div>
             <div className="form_item">
