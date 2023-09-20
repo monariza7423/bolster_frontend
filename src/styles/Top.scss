@@ -4,19 +4,20 @@
   box-sizing: border-box;
 }
 
-.container {
+
+.wrapper {
   width: 100%;
   display: flex; 
   flex-direction: column;
-  align-items: flex-end;
+  padding: 0;
+  margin: 0;
 }
 
 .main_visual {
   width: 100%;
-  height: 400px;
+  height: 500px;
   background-image: url(/images/background_pc_kikyu_2022.png);
   background-size: cover;
-  background-position: center;
   margin-bottom: 120px;
 }
 
@@ -24,13 +25,15 @@
 .home_left {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: start;
+  width: 100%;
   padding-left: 60px;
 }
 
 .home_left_contents {
   width: 35%;
   padding: 30px 40px 0 0;
+  margin: 0;
 }
 
 .home_left_img {
@@ -44,6 +47,7 @@
 
 // 文章右側
 .home_right {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -86,23 +90,49 @@
   margin-bottom: 30px;
 }
 
-.home_center {
+.home_center_video {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   padding-left: 60px;
-  padding-right: 60px;
+  width: 100%;
+}
+
+.home_center_video > h1,
+.home_center_video > p {
+  align-self: flex-start; /* 追加 */
 }
 
 .video {
-  width: 80%;
-  max-width: 600px;
-  margin: 0 auto;
+  text-align: center;
+  width: 70%;
+  margin-top: 30px;
 }
 
 .video video{
   width: 100%;
+}
+
+.home_center {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+
+  .more_btn_center {
+    width: 40%;
+    display: block;
+    margin: 0 auto;  /* Center the button */
+    padding: 30px 40px;
+    background-color: rgb(45, 188, 209);
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 30px;
+  }
+
 }
 
 // ボタン
@@ -110,7 +140,7 @@
   width: 100%;
   display: inline-block;
   padding: 30px 40px;
-  background-color: rgb(0, 229, 255);
+  background-color: rgb(45, 188, 209);
   color: white;
   text-decoration: none;
   font-size: 25px;
@@ -123,20 +153,11 @@
   width: 30px;
 }
 
-.more_btn_center {
-  width: 40%;
-  display: inline-block;
-  padding: 30px 40px;
-  background-color: rgb(0, 229, 255);
-  color: white;
-  text-decoration: none;
-  font-size: 25px;
-  text-align: center;
-  font-weight: bold;
-  margin-top: 30px;
-}
-
 .more_btn_center img{
   margin-left: 10px;
   width: 30px;
+}
+
+.top_btn {
+  text-align: right;
 }

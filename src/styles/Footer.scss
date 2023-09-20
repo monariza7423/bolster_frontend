@@ -9,21 +9,24 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(41, 37, 37);
+  background-color: rgb(51,51,51);
   padding: 60px 60px;
 }
 
 .footer_contents {
+  width: 1300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  border-bottom: solid 1px white;
   padding-bottom: 30px;
 }
 
 .footer_logo img {
-  width: 120px;
+  width: 200px;
+}
+
+.footer_nav {
+  margin-top: -50px;
 }
 
 .footer_nav ul{
@@ -31,9 +34,16 @@ footer {
 }
 
 .footer_nav li {
+  font-size: 18px;
   list-style: none;
-  margin-left: 30px;
   letter-spacing: 3px;
+  font-weight: bold;
+  padding: 20px 40px 0 40px;
+}
+
+.footer_nav a {
+  text-decoration: none;
+  color: white;
 }
 
 .privacy_policy {
@@ -41,12 +51,28 @@ footer {
   clear: both;
   color: white;
   font-size: 20px;
-  margin-top: 15px;
   text-align: right;
 }
 
 .copyright {
+  width: 90%;
   color: white;
-  text-align: center;
-  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  letter-spacing: 3px;
+  border-top: solid 1px white;
+  padding-top: 30px;
+}
+
+.social_icons {
+  text-align: right;
+  position: absolute;
+  right: 200px;
+}
+
+.social_icon {
+  margin-right: 30px;
+  width: 50px;
 }

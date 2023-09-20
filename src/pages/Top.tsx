@@ -1,15 +1,15 @@
 import { FC, memo } from "react";
 import { Header } from "../layout/Header";
 import { Footer } from "../layout/Footer";
-import '../styles/Top.scss';
 import { Link } from "react-router-dom";
 import { ScrollToTopButton } from "../components/button/ScrollToTopButton";
+import '../styles/Top.scss';
 
 export const Top: FC = memo(() => {
   return(
     <>
       <Header />
-      <div className="container">
+      <div className="wrapper">
         <div className="main_visual"></div>
         <div className="home_left">
           <div className="home_left_contents">
@@ -41,7 +41,7 @@ export const Top: FC = memo(() => {
           </div>
         </div>
 
-        <div className="home_center">
+        <div className="home_center_video">
           <h1 className="article_title">MEMBER</h1>
           <p className="sub_title">メンバー</p>
           <p className="info">
@@ -83,6 +83,8 @@ export const Top: FC = memo(() => {
             ALL MEMBER <img src="/images/arrow2.png" alt="矢印" />
           </Link>
         </div>
+      </div>
+      <div className="top_btn">
         <ScrollToTopButton />
       </div>
       <Footer />

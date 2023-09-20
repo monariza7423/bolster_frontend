@@ -4,18 +4,24 @@
   box-sizing: border-box;
 }
 
-.container {
+.top_box {
   width: 100%;
   display: flex; 
   flex-direction: column;
   align-items: flex-end;
+  margin-bottom: 60px;
+}
+
+.container_service {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .service_img {
   position: relative;
   margin-top: 60px;
   width: 60%;
-  height: 330px;
   overflow: hidden;
   text-align: right;
 }
@@ -28,11 +34,12 @@
   color: white;
   font-size: 135px;
   font-weight: bold;
+  line-height: 0.75;
 }
 
 .service_img img {
   width: 100%;
-  height: 290px;
+  height: 500px;
   object-fit: cover;
   object-position: center;
 }
@@ -65,7 +72,7 @@
 }
 
 .button.active {
-  border-bottom-color: rgb(0, 170, 255);
+  border-bottom-color: rgb(45, 188, 209);
 }
 
 @keyframes fadeIn {
@@ -79,4 +86,8 @@
 
 .section_active {
   animation: fadeIn 0.5s ease-out forwards;
+}
+
+.top_btn {
+  text-align: right;
 }

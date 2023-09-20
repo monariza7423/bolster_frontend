@@ -86,7 +86,7 @@ export const Contact: FC = memo(() => {
   return (
     <>
       <Header />
-      <div className="container">
+      <div className="top_box">
         <div className="contact_img">
           <span className="page_title">CONTACT</span>
           <img src="/images/Contact.jpg" alt="MEMBER" />
@@ -164,7 +164,7 @@ export const Contact: FC = memo(() => {
           </form>
         </div>
       </div>
-      <div className="container">
+      <div className="top_btn">
         <ScrollToTopButton />
       </div>
       <Footer />

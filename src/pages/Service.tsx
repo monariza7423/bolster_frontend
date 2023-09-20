@@ -13,11 +13,13 @@ export const Service: FC = memo(() => {
   return (
     <>
       <Header />
-      <div className="container">
+      <div className="top_box">
         <div className="service_img">
           <span className="page_title">SERVICE</span>
           <img src="/images/service.jpg" alt="SERVICE" />
         </div>
+      </div>
+      <div className="container_service">
         <div className="service_contents">
           <p className="phrase">
             BOLSTERは「世の中の1人でも多くの人をHAPPYに。」する事業は何でも行います。<br />
@@ -39,12 +41,13 @@ export const Service: FC = memo(() => {
             BtoC事業
           </button>
         </div>
+      </div>
 
         <div className="section_part">
           {activeSection === 'BtoB' && <BtoBSection className="section_active" />}
           {activeSection === 'BtoC' && <BtoCSection className="section_active" />}
         </div>
-
+      <div className="top_btn">
         <ScrollToTopButton />
       </div>
       <Footer />

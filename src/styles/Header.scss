@@ -6,39 +6,108 @@
 
 header{
   width: 100%;
+  background-color: rgb(51,51,51);
+  overflow: hidden;
+}
+
+.header_contents {
+  max-width: 1300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 110px;
   margin: 0 auto;
-  padding: 0 4%;
-  background-color: rgb(41, 37, 37);
+}
+
+.site_logo {
+  margin-left: 80px;
 }
 
 .site_logo img{
-  width: 300px;
+  width: 290px;
 }
 
-// リンク作成時に削除
 nav ul li{
   color: white;
 }
 
+.header_nav {
+  height: 100%;
+}
+
 .header_nav ul{
   display: flex;
+  flex-grow: 1;
+  height: 110px;
 }
 
 .header_nav li{
+  display: flex;
+  align-items: center;
   list-style: none;
   letter-spacing: 3px;
-  padding: 50px 10px 50px 10px;
+  font-size: 20px;
+  font-weight: 500;
+  height: 100%;
+  line-height: 100%;
+  vertical-align: middle;
+  padding: 0 15px;
 }
 
-.header_nav li:last-child {
-  padding-right: 0;
+.header_nav > * {
+  margin-bottom: 0;
+}
+
+.header_nav li img {
+  display: block;
+  margin-left: 2px;
+  width: 25px;
 }
 
 .header_nav li a{
+  position: relative;
+  display: block;
   text-decoration: none;
   color: white;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.header_nav li a::before {
+  content: '';
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease-out;
+}
+
+.header_nav li a:hover::before {
+  width: 80px;
+}
+
+.header_nav li:last-child {
+  display: flex;
+  align-items: center;
+}
+
+.header_nav li:last-child a::before {
+  content: none;
+}
+
+
+.header_nav li:last-child a {
+  background-color: rgb(32,200,209);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px; 
+}
+
+.header_nav li:last-child a:hover {
+  background-color: rgb(47, 223, 233);
 }

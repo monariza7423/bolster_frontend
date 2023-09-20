@@ -9,7 +9,7 @@ export const Member: FC = memo(() => {
   return (
     <>
       <Header />
-      <div className="container">
+      <div className="top_box">
         <div className="member_img">
           <span className="page_title">MEMBER</span>
           <img src="/images/member_2.jpg" alt="MEMBER" />
@@ -55,7 +55,7 @@ export const Member: FC = memo(() => {
           <MemberListItem />
         </div>
       </div>
-      <div className="container">
+      <div className="top_btn">
         <ScrollToTopButton />
       </div>
       <Footer />

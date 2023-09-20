@@ -4,11 +4,12 @@
   box-sizing: border-box;
 }
 
-.container {
+.top_box {
   width: 100%;
   display: flex; 
   flex-direction: column;
   align-items: flex-end;
+  margin-bottom: 60px;
 }
 
 .container_member {
@@ -21,7 +22,6 @@
   position: relative;
   margin-top: 60px;
   width: 60%;
-  height: 330px;
   overflow: hidden;
   text-align: right;
 }
@@ -30,15 +30,16 @@
   position: absolute;
   z-index: 1;
   right: 0;
-  bottom: 0;
+  bottom: -135px;
   color: white;
   font-size: 135px;
   font-weight: bold;
+  line-height: 0.75;
 }
 
 .member_img img {
   width: 100%;
-  height: 290px;
+  height: 500px;
   object-fit: cover;
   object-position: center;
 }
@@ -138,4 +139,8 @@
 .member_list_item {
   margin-top: 90px;
   padding: 0 60px;
+}
+
+.top_btn {
+  text-align: right;
 }

@@ -4,6 +4,7 @@ import { Top } from "../pages/Top";
 import { Service } from "../pages/Service";
 import { Member } from "../pages/Member";
 import { Contact } from "../pages/Contact";
+import { ThreadBbs } from "../pages/ThreadBbs";
 
 export const Router: FC = memo(() => {
   return (
@@ -14,6 +15,7 @@ export const Router: FC = memo(() => {
           <Route path="/service" element={<Service />} />
           <Route path="/member" element={<Member />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/thread_bbs" element={<ThreadBbs />} />
         </Route>
       </Routes>
     </BrowserRouter>
