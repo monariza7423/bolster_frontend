@@ -14,13 +14,13 @@ export const Footer: FC = memo(() => {
 
         <nav className="footer_nav">
           <ul>
-            <li>ABOUT</li>
-            <li><Link to="/service">SERVICE</Link></li>
-            <li><Link to="/member">MEMBER</Link></li>
-            <li>RECRUIT</li>
-            <li><Link to="/contact">CONTACT</Link></li>
+            <li><span>ABOUT <img src="/images/arrow.png" alt="右矢印" className="footer_arrow" /></span></li>
+            <li><Link to="/service"><span>SERVICE <img src="/images/arrow.png" alt="右矢印" className="footer_arrow" /></span></Link></li>
+            <li><Link to="/member"><span>MEMBER <img src="/images/arrow.png" alt="右矢印" className="footer_arrow" /></span></Link></li>
+            <li><span>RECRUIT <img src="/images/arrow.png" alt="右矢印" className="footer_arrow" /></span></li>
+            <li><Link to="/contact"><span>CONTACT <img src="/images/arrow.png" alt="右矢印" className="footer_arrow" /></span></Link></li>
           </ul>
-          <li className="privacy_policy">PRIVACY POLICY</li>
+          <li className="privacy_policy"><span>PRIVACY POLICY <img src="/images/arrow.png" alt="右矢印" className="footer_arrow" /></span></li>
         </nav>
       </div>
       <div className="copyright">

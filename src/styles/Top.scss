@@ -101,7 +101,7 @@
 
 .home_center_video > h1,
 .home_center_video > p {
-  align-self: flex-start; /* 追加 */
+  align-self: flex-start;
 }
 
 .video {
@@ -118,21 +118,21 @@
   max-width: 1200px;
   margin: 0 auto;
   text-align: left;
+}
 
-  .more_btn_center {
-    width: 40%;
-    display: block;
-    margin: 0 auto;  /* Center the button */
-    padding: 30px 40px;
-    background-color: rgb(45, 188, 209);
-    color: white;
-    text-decoration: none;
-    font-size: 25px;
-    text-align: center;
-    font-weight: bold;
-    margin-top: 30px;
-  }
 
+.more_btn_center {
+  width: 40%;
+  display: block;
+  margin: 0 auto;
+  padding: 30px 40px;
+  background-color: rgb(45, 188, 209);
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 30px;
 }
 
 // ボタン
@@ -160,4 +160,91 @@
 
 .top_btn {
   text-align: right;
+}
+
+@media screen and ( max-width: 600px) {
+  .wrapper {
+    width: 100%;
+  }
+
+  .main_visual {
+    background-image: url(/images/background_sp_kikyu_2022.png);
+    height: 100vh;
+  }
+
+  .home_left {
+    flex-direction: column-reverse;
+    padding: 0;
+  }
+
+  .home_left_img {
+    width: 100%;
+    padding-left: 50px;
+  }
+
+  .home_left_contents {
+    width: 100%;
+  }
+
+  .home_right {
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+    background-size: 100% 100%;
+  }
+
+  .home_right_contents {
+    width: 100%;
+    padding: 0;
+  }
+
+  .home_right_img {
+    width: 100%;
+    padding-right: 40px;
+  }
+
+  
+
+  .home_center_video {
+    padding: 0;
+  }
+
+  .video {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .home_center {
+    width: 100%;
+    padding: 0;
+  }
+  
+  .article_title {
+    padding-left: 40px;
+  }
+
+  .sub_title, .info {
+    padding-left: 50px;
+  }
+
+  .more_btn {
+    display: block;
+    padding: 25px 20px;
+    font-size: 30px;
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .more_btn img{
+    margin-left: 5px;
+    width: 20px;
+  }
+
+  .more_btn_center {
+    display: block;
+    padding: 25px 20px;
+    font-size: 30px;
+    width: 70%;
+    margin: 0 auto;
+  }
 }

@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.top_box {
+.top_box_member {
   width: 100%;
   display: flex; 
   flex-direction: column;
@@ -26,11 +26,11 @@
   text-align: right;
 }
 
-.page_title {
+.page_title_member {
   position: absolute;
   z-index: 1;
   right: 0;
-  bottom: -135px;
+  bottom: 0;
   color: white;
   font-size: 135px;
   font-weight: bold;
@@ -121,12 +121,23 @@
   padding: 0 60px;
 }
 
-.member_name_eg {
+.member_name_eg_1 {
   font-size: 50px;
   font-weight: 400;
 }
 
-.member_name_jp {
+.member_name_jp_1 {
+  color: gray;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.member_name_eg_2 {
+  font-size: 50px;
+  font-weight: 400;
+}
+
+.member_name_jp_2 {
   color: gray;
   font-size: 22px;
   margin-bottom: 20px;
@@ -143,4 +154,73 @@
 
 .top_btn {
   text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+  .container_member {
+    width: 100%;
+  }
+
+  .member_img {
+    width: 90%;
+    height: 300px;
+  }
+
+  .member_img img {
+    height: 100%;
+  }
+
+  .page_title_member {
+    font-size: 90px;
+    bottom: 0;
+  }
+
+  .member_ceo img{
+    width: 300px;
+  }
+
+  .member_cto img{
+    width: 300px;
+  }
+
+  .position_jp_1{
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
+  .position_jp_2{
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .position_eg {
+    font-size: 100px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .member_introduction {
+    padding: 0 30px;
+  }
+
+  .member_list_item {
+    margin-top: 30px;
+    padding: 0 30px;
+  }
+
+  .member_name_eg_2 {
+    text-align: right;
+  }
+
+  .member_name_jp_2 {
+    text-align: right;
+  }
 }

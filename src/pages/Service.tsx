@@ -13,9 +13,9 @@ export const Service: FC = memo(() => {
   return (
     <>
       <Header />
-      <div className="top_box">
+      <div className="top_box_service">
         <div className="service_img">
-          <span className="page_title">SERVICE</span>
+          <span className="page_title_service">SERVICE</span>
           <img src="/images/service.jpg" alt="SERVICE" />
         </div>
       </div>

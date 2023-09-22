@@ -3,7 +3,7 @@ import { Header } from "../layout/Header";
 import { Footer } from "../layout/Footer";
 import '../styles/Contact.scss';
 import { ScrollToTopButton } from "../components/button/ScrollToTopButton";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const Contact: FC = memo(() => {
   const [ firstName, setFirstName] = useState("");
@@ -15,6 +15,21 @@ export const Contact: FC = memo(() => {
   const [confirmEmail, setConfirmEmail] = useState("");
   const [contactType, setContactType] = useState("");
   const [ content, setContent] = useState("");
+
+
+  const [errorMessages, setErrorMessages] = useState<{
+    firstName?: string;
+    lastName?: string;
+    firstNameKana?: string;
+    lastNameKana?: string;
+    email?: string;
+    confirmEmail?: string;
+    contactType?: string;
+    content?: string;
+  }>({});
+  
+
+  const navigate = useNavigate();
 
   const onChangeFirstName = (e:React.ChangeEvent<HTMLInputElement>) => {
     setFirstName(e.target.value);
@@ -55,45 +70,54 @@ export const Contact: FC = memo(() => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    let errors: typeof errorMessages = {};
+
+    if (!firstName) errors.firstName = "氏名(姓)が入力されていません。";
+    if (!lastName) errors.lastName = "氏名(名)が入力されていません。";
+    if (!firstNameKana) errors.firstNameKana = "氏名(ふりがな 姓)が入力されていません。";
+    if (!lastNameKana) errors.lastNameKana = "氏名(ふりがな 名)が入力されていません。";
+    if (!email) errors.email = "メールアドレスが入力されていません。";
+    if (!confirmEmail) errors.confirmEmail = "メールアドレス（確認用）が入力されていません。";
+    if (email !== confirmEmail) errors.confirmEmail = "メールアドレスが一致していません。";
+    if (!contactType) errors.contactType = "お問い合わせ種類が選択されていません。";
+    if (!content) errors.content = "お問合せ内容が入力されていません。";
+
+    if (Object.keys(errors).length) {
+      setErrorMessages(errors);
+      return;
+    }
+
     if (email !== confirmEmail) {
         alert("メールアドレスが一致していません。");
         return;
     }
 
-    try {
-      const response = await axios.post("http://127.0.0.1:8000/api/contact", {
-        first_name: firstName,
-        last_name: lastName,
-        first_name_kana: firstNameKana,
-        last_name_kana: lastNameKana,
-        company: company,
-        email: email,
-        contact_type: contactType,
-        content: content
-      });
-
-      if (response.status === 200) {
-        alert("送信成功しました");
-      } else {
-        alert("送信失敗しました");
+    navigate("/contact/form", {
+      state: {
+        firstName,
+        lastName,
+        firstNameKana,
+        lastNameKana,
+        company,
+        email,
+        contactType,
+        content
       }
-    }catch (error) {
-      alert("問題が発生しました");
-    }
+    });
   };
 
 
   return (
     <>
       <Header />
-      <div className="top_box">
+      <div className="top_box_contact">
         <div className="contact_img">
-          <span className="page_title">CONTACT</span>
+          <span className="page_title_contact">CONTACT</span>
           <img src="/images/Contact.jpg" alt="MEMBER" />
         </div>
       </div>
       <div className="container_contact">
-        <div className="contact_contact">
+        <div className="contact_contents">
           <p className="phrase">
             下記の必要項目を入力して送信してください。<br />
             1 週間以内に、担当者より折り返しご連絡致します。<br />
@@ -115,12 +139,16 @@ export const Contact: FC = memo(() => {
             <div className="form_item">
               <label className="label">氏名*</label>
               <input type="text" value={firstName} onChange={onChangeFirstName} className="input" placeholder="お名前 姓" />
+              <span className="error">{errorMessages.firstName}</span>
               <input type="text" value={lastName} onChange={onChangeLastName} className="input" placeholder="お名前 名" />
+              <span className="error">{errorMessages.lastName}</span>
             </div>
             <div className="form_item">
               <label className="label">氏名(ふりがな)*</label>
               <input type="text" value={firstNameKana} onChange={onChangeFirstNameKana} className="input" placeholder="フリガナ セイ" />
+              <span className="error">{errorMessages.firstNameKana}</span>
               <input type="text" value={lastNameKana} onChange={onChangeLastNameKana} className="input" placeholder="フリガナ メイ" />
+              <span className="error">{errorMessages.lastNameKana}</span>
             </div>
             <div className="form_item">
               <label className="label">会社名</label>
@@ -129,6 +157,7 @@ export const Contact: FC = memo(() => {
             <div className="form_item">
               <label className="label">メールアドレス*</label>
               <input type="text" value={email} onChange={onChangeEmail} className="input" placeholder="半角で入力してください" />
+              <span className="error">{errorMessages.email}</span>
             </div>
             <div className="form_item">
               <label className="label">メールアドレス（確認用）*</label>
@@ -144,10 +173,12 @@ export const Contact: FC = memo(() => {
                 <option value="採用について">採用について</option>
                 <option value="その他">その他</option>
               </select>
+              <span className="error">{errorMessages.contactType}</span>
             </div>
             <div className="form_item">
               <label className="label">お問合せ内容*</label>
               <textarea value={content} onChange={onChangeContent} className="text_area"></textarea>
+              <span className="error">{errorMessages.content}</span>
             </div>
             <div className="contact_box">
               <div className="contact_info">

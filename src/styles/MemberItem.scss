@@ -33,3 +33,13 @@
 .member_list_name :last-child {
   color: gray;
 }
+
+@media screen and (max-width: 600px) {
+  .role {
+    font-size: 30px;
+  }
+
+  .member_list_name :first-child {
+    font-size: 30px;
+  }
+}

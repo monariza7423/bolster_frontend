@@ -9,9 +9,9 @@ export const Member: FC = memo(() => {
   return (
     <>
       <Header />
-      <div className="top_box">
+      <div className="top_box_member">
         <div className="member_img">
-          <span className="page_title">MEMBER</span>
+          <span className="page_title_member">MEMBER</span>
           <img src="/images/member_2.jpg" alt="MEMBER" />
         </div>
       </div>
@@ -29,8 +29,8 @@ export const Member: FC = memo(() => {
           </div>
         </div>
         <div className="member_introduction">
-          <h3 className="member_name_eg">Tadahiro Matsuda</h3>
-          <p className="member_name_jp">松田忠浩</p>
+          <h3 className="member_name_eg_1">Tadahiro Matsuda</h3>
+          <p className="member_name_jp_1">松田忠浩</p>
           <p className="member_detail">
             「世の中の1人でも多くの人をHAPPYに。」の企業理念を掲げ、2016年2月に独立。前職のソフトバンク株式会社時代には、15年に渡りインターネット事業（EC事業、デジタル広告事業）を責任者として牽引。
             関西学院大学卒業。神戸市出身。ZETA株式会社事業開発担当兼務。
@@ -44,8 +44,8 @@ export const Member: FC = memo(() => {
           </div>
         </div>
         <div className="member_introduction">
-          <h3 className="member_name_eg">Naoyuki Takada</h3>
-          <p className="member_name_jp">高田尚幸</p>
+          <h3 className="member_name_eg_2">Naoyuki Takada</h3>
+          <p className="member_name_jp_2">高田尚幸</p>
           <p  className="member_detail">
             前職でバックエンド、フロントエンド、ネイティブアプリ開発、ディレクター、新人教育など開発に掛かる業務を一通り経験し、現在BOLSTERの開発業務全般を管理している。
             常にユーザー目線を第一に熟考できるチーム作りを目指す。

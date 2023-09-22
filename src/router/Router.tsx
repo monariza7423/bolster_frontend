@@ -5,6 +5,8 @@ import { Service } from "../pages/Service";
 import { Member } from "../pages/Member";
 import { Contact } from "../pages/Contact";
 import { ThreadBbs } from "../pages/ThreadBbs";
+import { ContactConfirm } from "../pages/ContactConfirm";
+import { ContactComplete } from "../pages/ContactComplete";
 
 export const Router: FC = memo(() => {
   return (
@@ -15,6 +17,8 @@ export const Router: FC = memo(() => {
           <Route path="/service" element={<Service />} />
           <Route path="/member" element={<Member />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/contact/form" element={<ContactConfirm />} />
+          <Route path="/contact/complete" element={<ContactComplete />} />
           <Route path="/thread_bbs" element={<ThreadBbs />} />
         </Route>
       </Routes>

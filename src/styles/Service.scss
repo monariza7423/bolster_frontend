@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.top_box {
+.top_box_service {
   width: 100%;
   display: flex; 
   flex-direction: column;
@@ -26,7 +26,7 @@
   text-align: right;
 }
 
-.page_title {
+.page_title_service {
   position: absolute;
   z-index: 1;
   right: 0;
@@ -90,4 +90,24 @@
 
 .top_btn {
   text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+  .container_service {
+    width: 100%;
+  }
+
+  .service_img {
+    width: 90%;
+    height: 300px;
+  }
+
+  .service_img img {
+    height: 100%;
+  }
+
+  .page_title_service {
+    font-size: 90px;
+    bottom: 0;
+  }
 }

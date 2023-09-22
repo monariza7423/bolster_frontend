@@ -28,8 +28,8 @@ export const MemberItem: FC<MemberItemProps> = memo(({
           <div>{englishName}</div>
           <div>{japaneseName}</div>
         </div>
-        <div>Hobby: {hobby}</div>
-        <div>Skill: {skill}</div>
+        <div>趣味: {hobby}</div>
+        <div>特技: {skill}</div>
       </div>
     </div>
   );
