@@ -24,7 +24,7 @@ export const ContactConfirm: FC = memo(() => {
         content: formData.content
       });
 
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 201) {
         navigate("/contact/complete");
       } else {
         alert("送信失敗しました");
