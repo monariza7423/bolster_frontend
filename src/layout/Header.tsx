@@ -24,7 +24,7 @@ export const Header: FC = memo(() => {
 
         <nav className={`header_nav ${isNavOpen ? 'open' : ''}`}>
           <ul>
-            <li><span>ABOUT <img src="/images/arrow_header.png" alt="右矢印" className="header_arrow" /></span></li>
+            <li><Link to="/thread_bbs"><span>BBS <img src="/images/arrow_header.png" alt="右矢印" className="header_arrow" /></span></Link></li>
             <li><Link to="/service"><span>SERVICE <img src="/images/arrow_header.png" alt="右矢印" className="header_arrow" /></span></Link></li>
             <li><Link to="/member"><span>MEMBER <img src="/images/arrow_header.png" alt="右矢印" className="header_arrow" /></span></Link></li>
             <li><span>RECRUIT <img src="/images/arrow_header.png" alt="右矢印" className="header_arrow" /></span></li>

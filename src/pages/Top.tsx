@@ -79,8 +79,8 @@ export const Top: FC = memo(() => {
           <p className="info">
           WEBサイト制作やシステム開発、デジタルマーケティング支援などのご相談、BOLSTERに対するご意見・ご要望などがございましたら、お気軽にお問い合わせください。
           </p>
-          <Link to="/service" className="more_btn_center">
-            ALL MEMBER <img src="/images/arrow2.png" alt="矢印" />
+          <Link to="/contact" className="more_btn_center">
+            CONTACT <img src="/images/arrow2.png" alt="矢印" />
           </Link>
         </div>
       </div>

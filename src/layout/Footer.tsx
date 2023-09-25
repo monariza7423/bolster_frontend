@@ -25,8 +25,8 @@ export const Footer: FC = memo(() => {
       </div>
       <div className="copyright">
         <div className="social_icons">
-          <img src="/images/fb.png" alt="FaceBook" className="social_icon" />
-          <img src="/images/tw.png" alt="Twitter" className="social_icon" />
+          <img src="/images/fb.png" alt="FaceBook" className="footer_social_icon" />
+          <img src="/images/tw.png" alt="Twitter" className="footer_social_icon" />
         </div>
         <p>Copyright © BOLSTER, INC. All rights reserved.</p>
       </div>

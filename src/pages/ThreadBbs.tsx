@@ -1,16 +1,24 @@
-import { FC, memo, useState } from "react";
+import { FC, memo, useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Header } from "../layout/Header";
 import { Footer } from "../layout/Footer";
 import { ScrollToTopButton } from "../components/button/ScrollToTopButton";
 import { Button, Card, Container, Form } from "react-bootstrap";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addThread, setThreads, ThreadsState } from '../redux/threadsSlice';
+
+type Thread = {
+  id: number;
+  title: string;
+  name: string;
+  content: string;
+}
 
 export const ThreadBbs: FC = memo(() => {
-  // backend作成後変更
-  const threads = [
-    {id: 1, title: 'ダミー１', name: 'ダミー１さん', contents: 'ダミー１の本文です' },
-    {id: 2, title: 'ダミー2', name: 'ダミー2さん', contents: 'ダミー2の本文です' }
-  ]
+  const dispatch = useDispatch();
+
+  const threads = useSelector((state: { threads: ThreadsState }) => state.threads.threads);
 
   const [ formData, setFormData] = useState({ title: '', name: '', content: ''});
 
@@ -22,9 +30,32 @@ export const ThreadBbs: FC = memo(() => {
     }));
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit =  async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/api/thread_bbs", formData);
+      console.log(response.data);
+      dispatch(addThread(response.data.post));
+      setFormData({ title: '', name: '', content: ''});
+    } catch (error) {
+      console.log('エラー:', error);
+    }
   }
+
+  useEffect(() => {
+    const fetchThreads = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/thread_bbs");
+        dispatch(setThreads(response.data));
+        console.log(response.data.post);
+      } catch (error) {
+        console.log('エラー:', error);
+      }
+    };
+
+    fetchThreads();
+  }, [dispatch]);
 
   return (
     <>
@@ -46,20 +77,21 @@ export const ThreadBbs: FC = memo(() => {
           <Card style={{ width: '100%', margin: '30px 0' }} >
             <Card.Header>スレッド一覧</Card.Header>
             <Card.Body>
-              {threads.map((thread, index) => (
-                <div
-                  key={thread.id}
-                  style={{
-                    marginBottom: '10px',
-                    borderBottom: index !== threads.length - 1 ? 'solid 1px black' : 'none',
-                    padding: '10px'
-                  }}
-                >
-                  <strong>{thread.title}</strong>
-                  <p>{thread.name}</p>
-                  <p>{thread.contents}</p>
-                </div>
-              ))}
+            {threads.map((thread: Thread, index: number) => (
+              <div
+                key={thread.id}
+                style={{
+                  marginBottom: '10px',
+                  borderBottom: index !== threads.length - 1 ? 'solid 1px black' : 'none',
+                  padding: '10px'
+                }}
+              >
+                <strong>{thread.title}</strong>
+                <p>{thread.name}</p>
+                <p>{thread.content}</p>
+              </div>
+            ))}
+
             </Card.Body>
           </Card>
 
