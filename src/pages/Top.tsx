@@ -10,7 +10,16 @@ export const Top: FC = memo(() => {
     <>
       <Header />
       <div className="wrapper">
-        <div className="main_visual"></div>
+        <div className="main_visual">
+          <div className="store_badges_pc">
+            <img src="/images/google_play.png" alt="googl_play" className="google_badge_pc" />
+            <img src="/images/apple_store.svg" alt="app_store" className="app_badge_pc" />
+          </div>
+        </div>
+        <div className="store_badges_sp">
+          <img src="/images/google_play.png" alt="googl_play" className="google_badge_sp" />
+          <img src="/images/apple_store.svg" alt="app_store" className="app_badge_sp" />
+        </div>
         <div className="home_left">
           <div className="home_left_contents">
             <h1 className="article_title">ABOUT</h1>

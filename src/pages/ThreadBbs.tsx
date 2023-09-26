@@ -7,13 +7,8 @@ import { Button, Card, Container, Form } from "react-bootstrap";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addThread, setThreads, ThreadsState } from '../redux/threadsSlice';
-
-type Thread = {
-  id: number;
-  title: string;
-  name: string;
-  content: string;
-}
+import { Link } from "react-router-dom";
+import { Thread } from "../type/type";
 
 export const ThreadBbs: FC = memo(() => {
   const dispatch = useDispatch();
@@ -86,7 +81,9 @@ export const ThreadBbs: FC = memo(() => {
                   padding: '10px'
                 }}
               >
-                <strong>{thread.title}</strong>
+                <strong>
+                  <Link to={`/thread_bbs/${thread.id}`}  style={{ color: 'black' }}>{thread.title}</Link>
+                </strong>
                 <p>{thread.name}</p>
                 <p>{thread.content}</p>
               </div>

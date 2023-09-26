@@ -7,6 +7,7 @@ import { Contact } from "../pages/Contact";
 import { ThreadBbs } from "../pages/ThreadBbs";
 import { ContactConfirm } from "../pages/ContactConfirm";
 import { ContactComplete } from "../pages/ContactComplete";
+import { ThreadBbsDetail } from "../pages/ThreadBbsDetail";
 
 export const Router: FC = memo(() => {
   return (
@@ -20,6 +21,7 @@ export const Router: FC = memo(() => {
           <Route path="/contact/form" element={<ContactConfirm />} />
           <Route path="/contact/complete" element={<ContactComplete />} />
           <Route path="/thread_bbs" element={<ThreadBbs />} />
+          <Route path="/thread_bbs/:threadId" element={<ThreadBbsDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
