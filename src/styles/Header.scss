@@ -141,10 +141,12 @@ nav ul li{
   header {
     height: 70px;
     position: fixed;
+    z-index: 300;
   }
 
   .header_contents {
     width: 100%;
+    z-index: 201;
   }
 
   .site_logo {
@@ -154,18 +156,20 @@ nav ul li{
 
   .header_nav {
     position: fixed;
-    top: -100%;
+    transform: translateY(-100%);
+    top: -70px;
     left: 0;
     right: 0;
     width: 100%;
-    background-color: white;
     transition: all 0.5s;
     z-index: 200;
     overflow-y: auto;
 
     &.open {
       top: 70px;
-      height: 70vh;
+      height: 88vh;
+      transform: translateY(0);
+      background-color: white;
     }
   }
 

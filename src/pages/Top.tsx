@@ -11,6 +11,24 @@ export const Top: FC = memo(() => {
       <Header />
       <div className="wrapper">
         <div className="main_visual">
+          <div className="sp_image">
+            <img src="/images/sp_image2.png" alt="ケータイ" className="sp_img" />
+          </div>
+          <div className="kikyu_img_1">
+            <img src="/images/kikyu1.png" alt="気球１" />
+          </div>
+          <div className="kikyu_img_2">
+            <img src="/images/kikyu2.png" alt="気球１" />
+          </div>
+          <div className="kikyu_img_3">
+            <img src="/images/kikyu3.png" alt="気球１" />
+          </div>
+          <div className="kikyu_img_4">
+            <img src="/images/kikyu4.png" alt="気球１" />
+          </div>
+          <div className="kikyu_img_5">
+            <img src="/images/kikyu5.png" alt="気球１" />
+          </div>
           <div className="store_badges_pc">
             <img src="/images/google_play.png" alt="googl_play" className="google_badge_pc" />
             <img src="/images/apple_store.svg" alt="app_store" className="app_badge_pc" />

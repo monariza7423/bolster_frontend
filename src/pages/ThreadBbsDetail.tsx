@@ -32,7 +32,6 @@ export const ThreadBbsDetail: FC = memo(() => {
         const threadResponse = await axios.get(`http://127.0.0.1:8000/api/thread_bbs/${threadId}`);
         setThread(threadResponse.data);
 
-        // クエリパラメータを使用して特定のスレッドIDに関連する返信を取得
         const repliesResponse = await axios.get(`http://127.0.0.1:8000/api/thread_bbs_replies?thread_id=${threadId}`);
         dispatch(setReplies({ threadId: threadId, replies: repliesResponse.data }));
 
