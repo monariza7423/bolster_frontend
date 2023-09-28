@@ -25,8 +25,11 @@ const threadsSlice = createSlice({
     addThread: (state, action: PayloadAction<Thread>) => {
       state.threads.push(action.payload);
     },
+    deleteThread: (state, action: PayloadAction<number>) => {
+      state.threads = state.threads.filter(thread => thread.id !== action.payload);
+    },
   },
 });
 
-export const { setThreads, addThread } = threadsSlice.actions;
+export const { setThreads, addThread, deleteThread } = threadsSlice.actions;
 export default threadsSlice.reducer;

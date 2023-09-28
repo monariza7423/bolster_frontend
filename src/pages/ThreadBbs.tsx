@@ -6,8 +6,8 @@ import { ScrollToTopButton } from "../components/button/ScrollToTopButton";
 import { Button, Card, Container, Form } from "react-bootstrap";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addThread, setThreads, ThreadsState } from '../redux/threadsSlice';
-import { Link } from "react-router-dom";
+import { addThread, deleteThread, setThreads, ThreadsState } from '../redux/threadsSlice';
+import { Link, useNavigate } from "react-router-dom";
 import { Thread } from "../type/type";
 
 export const ThreadBbs: FC = memo(() => {
@@ -16,6 +16,8 @@ export const ThreadBbs: FC = memo(() => {
   const threads = useSelector((state: { threads: ThreadsState }) => state.threads.threads);
 
   const [ formData, setFormData] = useState({ title: '', name: '', content: ''});
+
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -52,6 +54,19 @@ export const ThreadBbs: FC = memo(() => {
     fetchThreads();
   }, [dispatch]);
 
+  const handleEdit = (thread: Thread) => {
+    navigate(`/thread_bbs/edit/${thread.id}`)
+  }
+
+  const handleDelete = async (threadId: number) => {
+    try {
+      await axios.delete(`http://127.0.0.1:8000/api/thread_bbs/${threadId}`);
+      dispatch(deleteThread(threadId));
+    } catch {
+      console.log('エラー');
+    }
+  }
+
   return (
     <>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
@@ -86,6 +101,8 @@ export const ThreadBbs: FC = memo(() => {
                 </strong>
                 <p>{thread.name}</p>
                 <p>{thread.content}</p>
+                <Button variant="success" onClick={() => handleEdit(thread)}>編集</Button>
+                <Button variant="danger" onClick={() => handleDelete(thread.id)}>削除</Button>
               </div>
             ))}
 
