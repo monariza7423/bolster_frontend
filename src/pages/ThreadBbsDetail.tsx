@@ -1,5 +1,5 @@
 import { FC, memo, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Thread } from "../type/type";
 import axios from "axios";
 import { Header } from "../layout/Header";
@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Card, Container, Form } from "react-bootstrap";
 import { ScrollToTopButton } from "../components/button/ScrollToTopButton";
 import { useDispatch, useSelector } from "react-redux";
-import { RepliesState, addReply, setReplies, Reply } from "../redux/replySlice";
+import { RepliesState, addReply, setReplies, deleteReply, Reply } from "../redux/replySlice";
 
 export const ThreadBbsDetail: FC = memo(() => {
   const params = useParams<{ threadId: string }>();
@@ -17,6 +17,7 @@ export const ThreadBbsDetail: FC = memo(() => {
   const dispatch = useDispatch();
   const replies = useSelector((state: { replies: RepliesState }) => state.replies.replies[threadId] || []);
   const [ formData, setFormData] = useState({ name: '', content: ''});
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -62,6 +63,20 @@ export const ThreadBbsDetail: FC = memo(() => {
         console.error('返信の保存に失敗しました：', error);
     }
   };
+
+  const handleReplyEdit = (reply: Reply) => {
+    navigate(`/thread_bbs_reply/edit/${reply.id}`)
+  }
+
+  const handleReplyDelete = async (replyId: number) => {
+      try {
+        await axios.delete(`http://127.0.0.1:8000/api/thread_bbs_reply/${replyId}`)
+        dispatch(deleteReply({threadId, replyId}));
+      } catch (error) {
+        console.log('返信削除失敗');
+      }
+  };
+
 
   return (
     <>
@@ -112,6 +127,8 @@ export const ThreadBbsDetail: FC = memo(() => {
                   >
                     <p style={{color: 'gray', fontSize: '15px'}}>{reply.name}</p>
                     <p>{reply.content}</p>
+                    <Button variant="success" onClick={() => handleReplyEdit(reply)}>編集</Button>
+                    <Button variant="danger" onClick={() => handleReplyDelete(reply.id)}>削除</Button>
                   </div>
                 ))}
               </div>

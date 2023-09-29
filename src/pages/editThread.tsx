@@ -14,7 +14,6 @@ export const EditThread: FC = memo(() => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Axiosなどを使用してデータを取得し、ステートにセットします
     const fetchThreadData = async () => {
         try {
             const response = await axios.get(`http://127.0.0.1:8000/api/thread_bbs/${threadId}`);
@@ -96,8 +95,8 @@ const handleEditSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         )}
       </div>
       <div style={{textAlign: 'right'}}>
-            <ScrollToTopButton />
-          </div>
+        <ScrollToTopButton />
+      </div>
       <Footer />
     </>
   );
