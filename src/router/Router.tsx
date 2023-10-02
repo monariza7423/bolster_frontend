@@ -24,8 +24,8 @@ export const Router: FC = memo(() => {
           <Route path="/contact/complete" element={<ContactComplete />} />
           <Route path="/thread_bbs" element={<ThreadBbs />} />
           <Route path="/thread_bbs/:threadId" element={<ThreadBbsDetail />} />
-          <Route path="/thread_bbs/edit/:threadId" element={<EditThread />} />
-          <Route path="/thread_bbs_reply/edit/:replyId" element={<EditThreadBbsReply />} />
+          <Route path="/thread_bbs/:threadId/edit" element={<EditThread />} />
+          <Route path="/thread_bbs/:threadId/thread_bbs_reply/:replyId/edit" element={<EditThreadBbsReply />} />
         </Route>
       </Routes>
     </BrowserRouter>

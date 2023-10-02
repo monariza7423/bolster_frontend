@@ -12,7 +12,6 @@ import { Thread } from "../type/type";
 
 export const ThreadBbs: FC = memo(() => {
   const dispatch = useDispatch();
-
   const threads = useSelector((state: { threads: ThreadsState }) => state.threads.threads);
 
   const [ formData, setFormData] = useState({ title: '', name: '', content: ''});
@@ -55,7 +54,7 @@ export const ThreadBbs: FC = memo(() => {
   }, [dispatch]);
 
   const handleEdit = (thread: Thread) => {
-    navigate(`/thread_bbs/edit/${thread.id}`)
+    navigate(`/thread_bbs/${thread.id}/edit`)
   }
 
   const handleDelete = async (threadId: number) => {

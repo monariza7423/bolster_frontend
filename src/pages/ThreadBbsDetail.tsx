@@ -65,7 +65,7 @@ export const ThreadBbsDetail: FC = memo(() => {
   };
 
   const handleReplyEdit = (reply: Reply) => {
-    navigate(`/thread_bbs_reply/edit/${reply.id}`)
+    navigate(`/thread_bbs/${threadId}/thread_bbs_reply/${reply.id}/edit`);
   }
 
   const handleReplyDelete = async (replyId: number) => {
