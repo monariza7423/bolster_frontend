@@ -72,15 +72,12 @@ export const Contact: FC = memo(() => {
 
     let errors: typeof errorMessages = {};
 
-    if (!firstName) errors.firstName = "氏名(姓)が入力されていません。";
-    if (!lastName) errors.lastName = "氏名(名)が入力されていません。";
-    if (!firstNameKana) errors.firstNameKana = "氏名(ふりがな 姓)が入力されていません。";
-    if (!lastNameKana) errors.lastNameKana = "氏名(ふりがな 名)が入力されていません。";
-    if (!email) errors.email = "メールアドレスが入力されていません。";
-    if (!confirmEmail) errors.confirmEmail = "メールアドレス（確認用）が入力されていません。";
+    if (!firstName) errors.firstName = "お名前 姓を入力してください";
+    if (!lastName) errors.lastName = "お名前 名を入力してください";
+    if (!email) errors.email = "メールアドレスを入力してください";
     if (email !== confirmEmail) errors.confirmEmail = "メールアドレスが一致していません。";
     if (!contactType) errors.contactType = "お問い合わせ種類が選択されていません。";
-    if (!content) errors.content = "お問合せ内容が入力されていません。";
+    if (!content) errors.content = "お問合せ内容を入力してください";
 
     if (Object.keys(errors).length) {
       setErrorMessages(errors);
