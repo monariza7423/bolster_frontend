@@ -25,11 +25,11 @@ export const MemberItem: FC<MemberItemProps> = memo(({
       <div className="text_container">
         <div className="role">{role}</div>
         <div className="member_list_name">
-          <div>{englishName}</div>
-          <div>{japaneseName}</div>
+          <div className="english_name">{englishName}</div>
+          <div className="japanese_name">{japaneseName}</div>
         </div>
-        <div>趣味: {hobby}</div>
-        <div>特技: {skill}</div>
+        <div className="hobby">趣味: {hobby}</div>
+        <div className="skill">特技: {skill}</div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
   align-items: center;
   padding-top: 30px;
   padding-bottom: 30px;
+  background-size: cover;
 }
 
 .text_container {
@@ -14,6 +15,7 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .role {
@@ -35,11 +37,31 @@
 }
 
 @media screen and (max-width: 600px) {
-  .role {
-    font-size: 30px;
+  .text_container {
+    margin-left: 5%;
+  }
+  .member_item img {
+    width: 135px;
+    height: 135px;
   }
 
-  .member_list_name :first-child {
-    font-size: 30px;
+  .role {
+    font-size: 16px;
+  }
+
+  .english_name {
+    font-size: 16px;
+  }
+
+  .japanese_name {
+    font-size: 15px;
+  }
+
+  .hobby {
+    font-size: 15px;
+  }
+
+  .skill {
+    font-size: 15px;
   }
 }

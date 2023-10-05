@@ -11,3 +11,15 @@
 .scroll_btn img {
   width: 75px;
 }
+
+@media screen and ( max-width: 600px) {
+  .scroll_btn {
+    right: 5%;
+    margin-right: 5%;
+  }
+
+
+  .scroll_btn img {
+    width: 40px;
+  }
+}

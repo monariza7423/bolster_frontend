@@ -38,23 +38,23 @@ export const Top: FC = memo(() => {
           <img src="/images/google_play.png" alt="googl_play" className="google_badge_sp" />
           <img src="/images/apple_store.svg" alt="app_store" className="app_badge_sp" />
         </div>
+
         <div className="home_left">
           <div className="home_left_contents">
             <h1 className="article_title">ABOUT</h1>
             <p className="sub_title">会社概要</p>
             <p className="info">企業理念、CEOメッセージ、会社情報などを詳しくご紹介しています。</p>
-            <Link to="/service" className="more_btn">
+            {/* デザイン上、aboutだが掲示板へ飛ぶように設定 */}
+            <Link to="/thread_bbs" className="more_btn">
               MORE <img src="/images/arrow2.png" alt="矢印" />
             </Link>
           </div>
           <div className="home_left_img">
-            <img src="/images/about.jpg" alt="ABOUT" />
           </div>
         </div>
         
         <div className="home_right">
-          <div className="home_right_img">
-            <img src="/images/service.jpg" alt="SERVICE" />
+          <div className="home_right_img1">
           </div>
           <div className="home_right_contents">
             <h1 className="article_title">SERVICE</h1>
@@ -75,7 +75,7 @@ export const Top: FC = memo(() => {
             BOLSTERで働くメンバーをご紹介しています。こちらの動画はメンバーが実際に働く様子です。
           </p>
           <div className="video">
-            <video controls autoPlay muted loop>
+            <video autoPlay muted loop>
               <source src="/video/members_prod.mp4" type="video/mp4"/>
             </video>
           </div>
@@ -85,8 +85,7 @@ export const Top: FC = memo(() => {
         </div>
 
         <div className="home_right">
-          <div className="home_right_img">
-            <img src="/images/recruit.jpg" alt="RECRUIT" />
+          <div className="home_right_img2">
           </div>
           <div className="home_right_contents">
             <h1 className="article_title">RECRUIT</h1>
@@ -94,7 +93,7 @@ export const Top: FC = memo(() => {
             <p className="info">
             BOLSTERでは、企業理念「世の中の1人でも多くの人をHAPPYに」に共感し共に創出・拡大推進・支えて頂ける方を募集しています。
             </p>
-            <Link to="/service" className="more_btn">
+            <Link to="/" className="more_btn">
               MORE <img src="/images/arrow2.png" alt="矢印" />
             </Link>
           </div>
@@ -116,6 +115,5 @@ export const Top: FC = memo(() => {
       </div>
       <Footer />
     </>
-    
   );
 });

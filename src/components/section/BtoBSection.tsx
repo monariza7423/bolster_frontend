@@ -10,8 +10,8 @@ export const BtoBSection: FC<BtoBSectionProps> = memo(({className}) => {
   return (
     <div className={`section ${className}`}>
           <div className="service_right">
-            <div className="service_right_img">
-              <img src="/images/btob1.jpg" alt="ABOUT" />
+            <div className="service_right_img1">
+
             </div>
             <div className="service_right_contents">
               <p className="service_sub_title">SERVICE 01</p>
@@ -40,14 +40,12 @@ export const BtoBSection: FC<BtoBSectionProps> = memo(({className}) => {
                 CONTACT <img src="/images/arrow2.png" alt="矢印" />
               </Link>
             </div>
-            <div className="service_left_img">
-              <img src="/images/btob2.jpg" alt="BtoB2" />
+            <div className="service_left_img1">
             </div>
           </div>
             
           <div className="service_right">
-            <div className="service_right_img">
-              <img src="/images/btob3.jpg" alt="ABOUT" />
+            <div className="service_right_img2">
             </div>
             <div className="service_right_contents">
               <p className="service_sub_title">SERVICE 03</p>
@@ -75,8 +73,7 @@ export const BtoBSection: FC<BtoBSectionProps> = memo(({className}) => {
                 CONTACT <img src="/images/arrow2.png" alt="矢印" />
               </Link>
             </div>
-            <div className="service_left_img">
-              <img src="/images/btob4.jpg" alt="BtoB2" />
+            <div className="service_left_img2">
             </div>
           </div>
         </div>

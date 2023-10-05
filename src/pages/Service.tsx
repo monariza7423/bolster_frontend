@@ -9,7 +9,6 @@ import { BtoCSection } from "../components/section/BtoCSection";
 export const Service: FC = memo(() => {
   const [ activeSection, setActiveSection] = useState('BtoB');
 
-
   return (
     <>
       <Header />

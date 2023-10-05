@@ -17,12 +17,11 @@ export const BtoCSection: FC<BtoCSectionProps> = memo(({className}) => {
             人々の「毎日を応援し合うSNS」です。<br />
             毎日のちょっとした目標から、将来の大きな夢まで、毎日をポジティブに。
           </p>
-          <Link to="/contact" className="btoc_btn">
+          <a href="https://kikyu.ohana-style.jp/lp" className="btoc_btn">
             GO SITE <img src="/images/arrow2.png" alt="矢印" />
-          </Link>
+          </a>
         </div>
         <div className="btoc_img">
-          <img src="/images/kikyu_about.png" alt="KiKYU" />
         </div>
       </div>
     </div>

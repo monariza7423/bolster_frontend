@@ -68,8 +68,8 @@
 
 .member_ceo_position {
   position: absolute;
-  bottom: 0;
-  left: 55%;
+  bottom: 5%;
+  left: 50%;
   background-color: rgba(255, 255, 255, 0);
   padding: 5px;
 }
@@ -89,8 +89,8 @@
 
 .member_cto_position {
   position: absolute;
-  bottom: 0;
-  right: 55%;
+  bottom: 5%;
+  right: 50%;
   background-color: rgba(255, 255, 255, 0);
   padding: 5px;
 }
@@ -99,17 +99,20 @@
   font-size: 25px;
   font-weight: bold;
   text-align: right;
+  line-height: 20px;
 }
 
 .position_jp_2{
   font-size: 25px;
   font-weight: bold;
   text-align: left;
+  line-height: 20px;
 }
 
 .position_eg {
-  font-size: 160px;
+  font-size: 150px;
   font-weight: bold;
+  line-height: 130px;
   text-shadow: 
     -1px -1px 0 #fff,  
     1px -1px 0 #fff,
@@ -133,11 +136,13 @@
 }
 
 .member_name_eg_2 {
+  text-align: right;
   font-size: 50px;
   font-weight: 400;
 }
 
 .member_name_jp_2 {
+  text-align: right;
   color: gray;
   font-size: 22px;
   margin-bottom: 20px;
@@ -157,30 +162,101 @@
 }
 
 @media screen and (max-width: 600px) {
+    .member_img {
+      width: 90%;
+      height: 300px;
+      margin-top: 25%;
+    }
+
+    .member_img img {
+      height: 100%;
+    }
+
+    .page_title_member {
+      font-size: 75px;
+      bottom: 0;
+    }
   .container_member {
     width: 100%;
-  }
 
-  .member_img {
-    width: 90%;
-    height: 300px;
-  }
+    .phrase {
+      padding: 0 5%;
+      font-size: 15px;
+    }
+    
+    .member_ceo img {
+      width: 70%;
+    }
 
-  .member_img img {
-    height: 100%;
-  }
+    .member_ceo_position {
+      left: 50%;
+      bottom: 0;
 
-  .page_title_member {
-    font-size: 90px;
-    bottom: 0;
-  }
+      .position_jp_1 {
+        font-size: 20px;
+        line-height: 0%;
+        text-align-last: left;
+        text-shadow: 
+          -0.1px -0.1px 0 #fff,  
+          0.1px -0.1px 0 #fff,
+          -0.1px 0.1px 0 #fff,
+          0.1px 0.1px 0 #fff;
+      }
 
-  .member_ceo img{
-    width: 300px;
-  }
+      .position_eg {
+        font-size: 75px;
+        line-height: 150%;
+      }
+    }
 
-  .member_cto img{
-    width: 300px;
+    .member_introduction {
+      padding: 0 10%;
+
+      .member_name_eg_1 {
+        font-size: 30px;
+      }
+
+      .member_name_jp_1 {
+        font-size: 22px;
+      }
+
+      .member_name_eg_2 {
+        font-size: 30px;
+      }
+
+      .member_name_jp_2 {
+        font-size: 22px;
+      }
+
+      .member_detail {
+        font-size: 15px;
+      }
+    }
+
+    .member_cto img {
+      width: 70%;
+    }
+
+    .member_cto_position {
+      right: 45%;
+      bottom: 0;
+
+      .position_jp_2 {
+        font-size: 20px;
+        line-height: 0%;
+        text-align-last: left;
+        text-shadow: 
+          -0.1px -0.1px 0 #fff,  
+          0.1px -0.1px 0 #fff,
+          -0.1px 0.1px 0 #fff,
+          0.1px 0.1px 0 #fff;
+      }
+
+      .position_eg {
+        font-size: 75px;
+        line-height: 150%;
+      }
+    }
   }
 
   .position_jp_1{
@@ -213,7 +289,7 @@
 
   .member_list_item {
     margin-top: 30px;
-    padding: 0 30px;
+    padding: 0 8%;
   }
 
   .member_name_eg_2 {

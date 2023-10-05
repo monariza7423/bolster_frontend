@@ -15,13 +15,11 @@ export const Header: FC = memo(() => {
             </Link>
           </h1>
         </div>
-
         <button className="burger" onClick={() => setNavOpen(!isNavOpen)}>
           <div className={`line1 ${isNavOpen ? 'open' : ''}`}></div>
           <div className={`line2 ${isNavOpen ? 'open' : ''}`}></div>
           <div className={`line3 ${isNavOpen ? 'open' : ''}`}></div>
         </button>
-
         <nav className={`header_nav ${isNavOpen ? 'open' : ''}`}>
           <ul>
             <li><Link to="/thread_bbs"><span>BBS <img src="/images/arrow_header.png" alt="右矢印" className="header_arrow" /></span></Link></li>

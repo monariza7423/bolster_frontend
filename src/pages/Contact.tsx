@@ -3,7 +3,7 @@ import { Header } from "../layout/Header";
 import { Footer } from "../layout/Footer";
 import '../styles/Contact.scss';
 import { ScrollToTopButton } from "../components/button/ScrollToTopButton";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Contact: FC = memo(() => {
   const [ firstName, setFirstName] = useState("");
@@ -126,7 +126,7 @@ export const Contact: FC = memo(() => {
             <h4 className="contact_info_title">リモートスタイル終了のお知らせ</h4>
             <p className="contact_info_contents_1">リモートスタイルを長らくご愛顧いただきまして、誠にありがとうございました。</p>
             <p className="contact_info_contents_2">2020年4月、在宅で過ごす皆様のHAPPYを少しでも実現する為に、コロナ禍で立ち上げたリモートスタイルも一定の役割を果たした為、以下の日程でサービスを終了致しました。</p>
-            <p className="contact_info_contents_3">終了日:2020年12月18</p>
+            <p className="contact_info_contents_3">終了日:2020年12月18日</p>
             <p className="contact_info_contents_4">リモートスタイルに関してのお問い合わせは下記フォーム「お問い合わせ種類」で「事業（リモートスタイル）について」を選択してお問い合わせください。</p>
           </div>
         </div>
@@ -134,14 +134,14 @@ export const Contact: FC = memo(() => {
         <div className="contact_form">
           <form onSubmit={handleSubmit}>
             <div className="form_item">
-              <label className="label">氏名*</label>
+              <label className="label">氏名<span className="clr_red">*</span></label>
               <input type="text" value={firstName} onChange={onChangeFirstName} className="input" placeholder="お名前 姓" />
               <span className="error">{errorMessages.firstName}</span>
               <input type="text" value={lastName} onChange={onChangeLastName} className="input" placeholder="お名前 名" />
               <span className="error">{errorMessages.lastName}</span>
             </div>
             <div className="form_item">
-              <label className="label">氏名(ふりがな)*</label>
+              <label className="label">氏名(ふりがな)<span className="clr_red">*</span></label>
               <input type="text" value={firstNameKana} onChange={onChangeFirstNameKana} className="input" placeholder="フリガナ セイ" />
               <span className="error">{errorMessages.firstNameKana}</span>
               <input type="text" value={lastNameKana} onChange={onChangeLastNameKana} className="input" placeholder="フリガナ メイ" />
@@ -152,28 +152,30 @@ export const Contact: FC = memo(() => {
               <input type="text" value={company} onChange={onChangeCompany} className="input" />
             </div>
             <div className="form_item">
-              <label className="label">メールアドレス*</label>
+              <label className="label">メールアドレス<span className="clr_red">*</span></label>
               <input type="text" value={email} onChange={onChangeEmail} className="input" placeholder="半角で入力してください" />
               <span className="error">{errorMessages.email}</span>
             </div>
             <div className="form_item">
-              <label className="label">メールアドレス（確認用）*</label>
+              <label className="label">メールアドレス（確認用）<span className="clr_red">*</span></label>
               <input type="text" value={confirmEmail} onChange={onChangeConfirmEmail} className="input" placeholder="半角で入力してください" />
             </div>
             <div className="form_item">
               <label className="label">お問い合わせ種類</label>
-              <select value={contactType} onChange={onChangeContactType} className="input">
-                <option value="">選択してください</option>
-                <option value="事業(WEB制作・開発)について">事業(WEB制作・開発)について</option>
-                <option value="事業(オハナスタイル)について">事業(オハナスタイル)について</option>
-                <option value="事業(リモートスタイル)について">事業(リモートスタイル)について</option>
-                <option value="採用について">採用について</option>
-                <option value="その他">その他</option>
-              </select>
+              <div className="select_box">
+                <select value={contactType} onChange={onChangeContactType} className="select">
+                  <option value="">選択してください</option>
+                  <option value="事業(WEB制作・開発)について">事業(WEB制作・開発)について</option>
+                  <option value="事業(オハナスタイル)について">事業(オハナスタイル)について</option>
+                  <option value="事業(リモートスタイル)について">事業(リモートスタイル)について</option>
+                  <option value="採用について">採用について</option>
+                  <option value="その他">その他</option>
+                </select>
+              </div>
               <span className="error">{errorMessages.contactType}</span>
             </div>
             <div className="form_item">
-              <label className="label">お問合せ内容*</label>
+              <label className="label">お問合せ内容<span className="clr_red">*</span></label>
               <textarea value={content} onChange={onChangeContent} className="text_area"></textarea>
               <span className="error">{errorMessages.content}</span>
             </div>
@@ -182,7 +184,7 @@ export const Contact: FC = memo(() => {
                 <h4 className="contact_info_title_2">■個人情報の利用目的について</h4>
                 <p className="contact_info_contents_1">
                   本お問い合わせフォームで収集した個人情報は、お問い合わせへの回答のみに利用します。<br />
-                  ※こちらの個人情報の取り扱いに関する要項をご確認のうえ、同意いただける場合は「同意して内容を確認する」ボタンを押してください。
+                  <Link to="/" className="privacy_link">※こちらの個人情報の取り扱いに関する要項</Link>をご確認のうえ、同意いただける場合は「同意して内容を確認する」ボタンを押してください。
                 </p>
               </div>
             </div>
