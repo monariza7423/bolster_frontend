@@ -14,7 +14,7 @@ footer {
 }
 
 .footer_contents {
-  max-width: 1300px;
+  max-width: 1200px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -44,12 +44,13 @@ footer {
   list-style: none;
   letter-spacing: 3px;
   font-weight: bold;
-  padding: 20px 5%;
+  width: 20%;
 }
 
-.footer_nav a {
+.footer_nav li a {
   text-decoration: none;
   color: white;
+  text-align: right;
 }
 
 .privacy_policy {

@@ -25,7 +25,7 @@ export const Header: FC = memo(() => {
             <li><Link to="/thread_bbs"><span>BBS <img src="/images/arrow_header.png" alt="右矢印" className="header_arrow" /></span></Link></li>
             <li><Link to="/service"><span>SERVICE <img src="/images/arrow_header.png" alt="右矢印" className="header_arrow" /></span></Link></li>
             <li><Link to="/member"><span>MEMBER <img src="/images/arrow_header.png" alt="右矢印" className="header_arrow" /></span></Link></li>
-            <li><span>RECRUIT <img src="/images/arrow_header.png" alt="右矢印" className="header_arrow" /></span></li>
+            <li><Link to="/"><span>RECRUIT <img src="/images/arrow_header.png" alt="右矢印" className="header_arrow" /></span></Link></li>
             <li className="contact_button"><Link to="/contact">CONTACT <img src="/images/arrow2.png" alt="右矢印" /></Link></li>
             <li className="header_responsive">
               <div className="social-icon">

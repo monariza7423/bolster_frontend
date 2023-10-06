@@ -40,6 +40,7 @@
 .complete_message {
   margin-top: 30px;
   margin-bottom: 30px;
+  padding: 0 60px;
 }
 
 .complete_btn {
@@ -74,13 +75,10 @@
 }
 
 @media screen and (max-width: 600px) {
-  .container_complete {
-    width: 100%;
-  }
-
   .complete_img {
     width: 90%;
     height: 300px;
+    margin-top: 25%;
   }
 
   .complete_img img {
@@ -88,12 +86,28 @@
   }
 
   .page_title_complete {
-    font-size: 90px;
+    font-size: 75px;
     bottom: 0;
   }
 
-  .complete_message {
-    margin-right: 30px;
-    margin-left: 30px;
+  .container_complete {
+    width: 100%;
+
+    .complete_message {
+      padding: 0 10%;
+    }
+
+    .complete_btn {
+      button {
+        width: 70%;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      img {
+        width: 20px;
+        margin-left: 5px;
+      }
+    }
   }
 }

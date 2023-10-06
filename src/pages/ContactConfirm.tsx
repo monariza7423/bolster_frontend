@@ -87,7 +87,7 @@ export const ContactConfirm: FC = memo(() => {
                 <h4 className="contactform_info_title_2">■個人情報の利用目的について</h4>
                 <p className="contactform_info_contents_1">
                   本お問い合わせフォームで収集した個人情報は、お問い合わせへの回答のみに利用します。<br />
-                  ※こちらの個人情報の取り扱いに関する要項をご確認のうえ、同意いただける場合は「同意して内容を確認する」ボタンを押してください。
+                  <Link to="/" className="privacy_link">※こちらの個人情報の取り扱いに関する要項</Link>をご確認のうえ、同意いただける場合は「同意して内容を確認する」ボタンを押してください。
                 </p>
               </div>
             </div>

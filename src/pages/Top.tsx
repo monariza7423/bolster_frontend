@@ -4,6 +4,7 @@ import { Footer } from "../layout/Footer";
 import { Link } from "react-router-dom";
 import { ScrollToTopButton } from "../components/button/ScrollToTopButton";
 import '../styles/Top.scss';
+import "@fontsource/source-sans-pro"; 
 
 export const Top: FC = memo(() => {
   return(
