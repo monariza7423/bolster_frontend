@@ -121,12 +121,13 @@ footer {
     padding: 0;
   }
 
-  .footer_nav li {
+  .footer_nav ul li {
     padding:10px 20px;
     border-top: 1px solid white;
     font-weight: normal;
     display: flex;
     justify-content: space-between;
+    width: 100%;
   }
 
   .footer_nav ul li:last-child {
@@ -134,10 +135,12 @@ footer {
   }
 
   .privacy_policy {
+    padding:10px 20px;
     text-align: left;
+    border-top: 1px solid white;
     border-bottom: 1px solid white;
     font-size: 15px;
-    font-weight: bold !important;
+    width: 100%;
   }
 
   .copyright {
