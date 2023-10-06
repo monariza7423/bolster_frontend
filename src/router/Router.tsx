@@ -10,10 +10,12 @@ import { ContactComplete } from "../pages/ContactComplete";
 import { ThreadBbsDetail } from "../pages/ThreadBbsDetail";
 import { EditThread } from "../pages/editThread";
 import { EditThreadBbsReply } from "../pages/EditThreadBbsReply";
+import { ScrollToTop } from "../components/scroll/ScrollToTop";
 
 export const Router: FC = memo(() => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" >
           <Route index={true} element={<Top />} />
