@@ -16,6 +16,8 @@ export const ThreadBbs: FC = memo(() => {
 
   const [ formData, setFormData] = useState({ title: '', name: '', content: ''});
 
+  const [errorMessages, setErrorMessages] = useState({ name: '', title: '', content: '' });
+
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -28,6 +30,21 @@ export const ThreadBbs: FC = memo(() => {
 
   const handleSubmit =  async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    setErrorMessages({ name: '', title: '', content: '' });
+
+    if (!formData.name) {
+      setErrorMessages((prevErrors) => ({ ...prevErrors, name: '名前を入力してください' }));
+      return;
+    }
+    if (!formData.title) {
+      setErrorMessages((prevErrors) => ({ ...prevErrors, title: 'タイトルを入力してください' }));
+      return;
+    }
+    if (!formData.content) {
+      setErrorMessages((prevErrors) => ({ ...prevErrors, content: '本文を入力してください' }));
+      return;
+    }
 
     try {
       const response = await axios.post("http://127.0.0.1:8000/api/thread_bbs", formData);
@@ -112,7 +129,7 @@ export const ThreadBbs: FC = memo(() => {
             <Card.Header style={{ textAlign: 'center', fontWeight: 'bold'}}>新規スレッドフォーム</Card.Header>
             <Card.Body>
               <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="formTitle">
+                <Form.Group controlId="formName">
                   <Form.Label>名前*</Form.Label>
                   <Form.Control 
                     type="text" 
@@ -122,9 +139,10 @@ export const ThreadBbs: FC = memo(() => {
                     onChange={handleChange}
                     style={{marginBottom: '10px'}}
                   />
+                  <div className="text-danger">{errorMessages.name}</div>
                 </Form.Group>
 
-                <Form.Group controlId="formName">
+                <Form.Group controlId="formTitle">
                   <Form.Label>タイトル*</Form.Label>
                   <Form.Control 
                     type="text" 
@@ -134,6 +152,7 @@ export const ThreadBbs: FC = memo(() => {
                     onChange={handleChange}
                     style={{marginBottom: '10px'}}
                   />
+                  <div className="text-danger">{errorMessages.title}</div>
                 </Form.Group>
 
                 <Form.Group controlId="formContent">
@@ -147,6 +166,7 @@ export const ThreadBbs: FC = memo(() => {
                     onChange={handleChange}
                     style={{marginBottom: '10px'}}
                   />
+                  <div className="text-danger">{errorMessages.content}</div>
                 </Form.Group>
 
                 <Button variant="primary" type="submit" style={{ margin: '0 auto'}}>

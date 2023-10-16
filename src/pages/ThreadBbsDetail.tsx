@@ -17,6 +17,7 @@ export const ThreadBbsDetail: FC = memo(() => {
   const dispatch = useDispatch();
   const replies = useSelector((state: { replies: RepliesState }) => state.replies.replies[threadId] || []);
   const [ formData, setFormData] = useState({ name: '', content: ''});
+  const [errorMessages, setErrorMessages] = useState({ name: '', content: '' });
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -50,6 +51,17 @@ export const ThreadBbsDetail: FC = memo(() => {
 
   const handleReplySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    setErrorMessages({ name: '', content: '' });
+
+    if (!formData.name) {
+      setErrorMessages((prevErrors) => ({ ...prevErrors, name: '名前を入力してください' }));
+      return;
+    }
+    if (!formData.content) {
+      setErrorMessages((prevErrors) => ({ ...prevErrors, content: '本文を入力してください' }));
+      return;
+    }
 
     try {
         const response = await axios.post('http://127.0.0.1:8000/api/thread_bbs_reply', {
@@ -139,7 +151,7 @@ export const ThreadBbsDetail: FC = memo(() => {
             <Card.Header style={{ textAlign: 'center', fontWeight: 'bold'}}>新規スレッドフォーム</Card.Header>
             <Card.Body>
               <Form onSubmit={handleReplySubmit}>
-                <Form.Group controlId="formTitle">
+                <Form.Group controlId="formName">
                   <Form.Label>名前*</Form.Label>
                   <Form.Control 
                     type="text" 
@@ -149,6 +161,7 @@ export const ThreadBbsDetail: FC = memo(() => {
                     style={{marginBottom: '10px'}}
                     onChange={handleChange}
                   />
+                  <div className="text-danger">{errorMessages.name}</div>
                 </Form.Group>
 
                 <Form.Group controlId="formContent">
@@ -162,6 +175,7 @@ export const ThreadBbsDetail: FC = memo(() => {
                     style={{marginBottom: '10px'}}
                     onChange={handleChange}
                   />
+                  <div className="text-danger">{errorMessages.content}</div>
                 </Form.Group>
 
                 <Button variant="primary" type="submit" style={{ margin: '0 auto'}}>

@@ -23,6 +23,8 @@ export const Contact: FC = memo(() => {
     firstNameKana?: string;
     lastNameKana?: string;
     email?: string;
+    emailEmpty?: string;
+    emailInvalid?: string;
     confirmEmail?: string;
     contactType?: string;
     content?: string;
@@ -67,6 +69,11 @@ export const Contact: FC = memo(() => {
     setContent(e.target.value);
   }
 
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -74,7 +81,13 @@ export const Contact: FC = memo(() => {
 
     if (!firstName) errors.firstName = "お名前 姓を入力してください";
     if (!lastName) errors.lastName = "お名前 名を入力してください";
-    if (!email) errors.email = "メールアドレスを入力してください";
+    if (!firstNameKana) errors.firstNameKana = "フリガナ セイを入力してください";
+    if (!lastNameKana) errors.lastNameKana = "フリガナ メイを入力してください";
+    if (!email) {
+      errors.emailEmpty = "メールアドレスを入力してください";
+    } else if (!isValidEmail(email)) {
+      errors.emailInvalid = "有効なメールアドレスを入力してください";
+    }
     if (email !== confirmEmail) errors.confirmEmail = "メールアドレスが一致していません。";
     if (!contactType) errors.contactType = "お問い合わせ種類が選択されていません。";
     if (!content) errors.content = "お問合せ内容を入力してください";
@@ -154,7 +167,8 @@ export const Contact: FC = memo(() => {
             <div className="form_item">
               <label className="label">メールアドレス<span className="clr_red">*</span></label>
               <input type="text" value={email} onChange={onChangeEmail} className="input" placeholder="半角で入力してください" />
-              <span className="error">{errorMessages.email}</span>
+              {errorMessages.emailEmpty && <span className="error">{errorMessages.emailEmpty}</span>}
+              {errorMessages.emailInvalid && <span className="error">{errorMessages.emailInvalid}</span>}
             </div>
             <div className="form_item">
               <label className="label">メールアドレス（確認用）<span className="clr_red">*</span></label>

@@ -80,7 +80,7 @@ export const Top: FC = memo(() => {
               <source src="/video/members_prod.mp4" type="video/mp4"/>
             </video>
           </div>
-          <Link to="/service" className="more_btn_center">
+          <Link to="/member" className="more_btn_center">
             ALL MEMBER <img src="/images/arrow2.png" alt="矢印" />
           </Link>
         </div>
