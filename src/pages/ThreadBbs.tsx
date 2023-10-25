@@ -20,6 +20,8 @@ export const ThreadBbs: FC = memo(() => {
 
   const navigate = useNavigate();
 
+  const baseURL = process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000";
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -31,23 +33,30 @@ export const ThreadBbs: FC = memo(() => {
   const handleSubmit =  async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setErrorMessages({ name: '', title: '', content: '' });
+    const newErrorMessages = { name: '', title: '', content: '' };
+    let isValid = true;
 
     if (!formData.name) {
-      setErrorMessages((prevErrors) => ({ ...prevErrors, name: '名前を入力してください' }));
-      return;
+      newErrorMessages.name = '名前を入力してください';
+      isValid = false;
     }
     if (!formData.title) {
-      setErrorMessages((prevErrors) => ({ ...prevErrors, title: 'タイトルを入力してください' }));
-      return;
+      newErrorMessages.title = 'タイトルを入力してください';
+      isValid = false;
     }
     if (!formData.content) {
-      setErrorMessages((prevErrors) => ({ ...prevErrors, content: '本文を入力してください' }));
+      newErrorMessages.content = '本文を入力してください';
+      isValid = false;
+    }
+
+    setErrorMessages(newErrorMessages);
+
+    if (!isValid) {
       return;
     }
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/thread_bbs", formData);
+      const response = await axios.post(`${baseURL}/api/thread_bbs`, formData);
       console.log(response.data);
       dispatch(addThread(response.data.post));
       setFormData({ title: '', name: '', content: ''});
@@ -59,7 +68,7 @@ export const ThreadBbs: FC = memo(() => {
   useEffect(() => {
     const fetchThreads = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/thread_bbs");
+        const response = await axios.get(`${baseURL}/api/thread_bbs`);
         dispatch(setThreads(response.data));
         console.log(response.data.post);
       } catch (error) {
@@ -68,7 +77,7 @@ export const ThreadBbs: FC = memo(() => {
     };
 
     fetchThreads();
-  }, [dispatch]);
+  }, [dispatch, baseURL]);
 
   const handleEdit = (thread: Thread) => {
     navigate(`/thread_bbs/${thread.id}/edit`)
@@ -76,7 +85,7 @@ export const ThreadBbs: FC = memo(() => {
 
   const handleDelete = async (threadId: number) => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/thread_bbs/${threadId}`);
+      await axios.delete(`${baseURL}/api/thread_bbs/${threadId}`);
       dispatch(deleteThread(threadId));
     } catch {
       console.log('エラー');

@@ -10,10 +10,14 @@ export const ContactConfirm: FC = memo(() => {
   const location = useLocation();
   const formData = location.state;
   const navigate = useNavigate();
+  const goBackToInputPage = () => {
+    navigate('/contact', { state: formData});
+  }
 
+  const baseURL = process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000";
   const sendDataToBackend = async () => {
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/contact", {
+      const response = await axios.post(`${baseURL}/api/contact`, {
         first_name: formData.firstName,
         last_name: formData.lastName,
         first_name_kana: formData.firstNameKana,
@@ -93,10 +97,8 @@ export const ContactConfirm: FC = memo(() => {
             </div>
             <div className="submit_btn_form">
               <button type="submit">送信 <img src="/images/arrow2.png" alt="矢印" /></button>
-              <button>
-                <Link to="/contact">
+              <button type="button" onClick={goBackToInputPage}>
                   入力ページに戻る <img src="/images/arrow2.png" alt="矢印" />
-                </Link>
               </button>
             </div>
           </form>

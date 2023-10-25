@@ -3,19 +3,20 @@ import { Header } from "../layout/Header";
 import { Footer } from "../layout/Footer";
 import '../styles/Contact.scss';
 import { ScrollToTopButton } from "../components/button/ScrollToTopButton";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export const Contact: FC = memo(() => {
-  const [ firstName, setFirstName] = useState("");
-  const [ lastName, setLastName] = useState("");
-  const [ firstNameKana, setFirstNameKana] = useState("");
-  const [ lastNameKana, setLastNameKana] = useState("");
-  const [ company, setCompany] = useState("");
-  const [ email, setEmail] = useState("");
+  const location = useLocation();
+  const formData = location.state || {};
+  const [ firstName, setFirstName] = useState(formData.firstName || "");
+  const [ lastName, setLastName] = useState(formData.lastName || "");
+  const [ firstNameKana, setFirstNameKana] = useState(formData.firstNameKana || "");
+  const [ lastNameKana, setLastNameKana] = useState(formData.lastNameKana || "");
+  const [ company, setCompany] = useState(formData.company || "");
+  const [ email, setEmail] = useState(formData.email || "");
   const [confirmEmail, setConfirmEmail] = useState("");
-  const [contactType, setContactType] = useState("");
-  const [ content, setContent] = useState("");
-
+  const [contactType, setContactType] = useState(formData.contactType || "");
+  const [ content, setContent] = useState(formData.content || "");
 
   const [errorMessages, setErrorMessages] = useState<{
     firstName?: string;
@@ -39,6 +40,11 @@ export const Contact: FC = memo(() => {
 
   const onChangeLastName = (e:React.ChangeEvent<HTMLInputElement>) => {
     setLastName(e.target.value);
+  }
+
+  const isValidKana = (text: string) => {
+    const kanaRegex = /^[ァ-ンヴー・]*$/;
+    return kanaRegex.test(text);
   }
 
   const onChangeFirstNameKana = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -81,8 +87,16 @@ export const Contact: FC = memo(() => {
 
     if (!firstName) errors.firstName = "お名前 姓を入力してください";
     if (!lastName) errors.lastName = "お名前 名を入力してください";
-    if (!firstNameKana) errors.firstNameKana = "フリガナ セイを入力してください";
-    if (!lastNameKana) errors.lastNameKana = "フリガナ メイを入力してください";
+    if (!firstNameKana) {
+      errors.firstNameKana = "フリガナ セイを入力してください";
+    } else if (!isValidKana(firstNameKana)) {
+      errors.firstNameKana = "フリガナ セイはカタカナで入力してください";
+    }
+    if (!lastNameKana) {
+      errors.lastNameKana = "フリガナ メイを入力してください";
+    } else if (!isValidKana(lastNameKana)) {
+      errors.lastNameKana = "フリガナ メイはカタカナで入力してください";
+    }
     if (!email) {
       errors.emailEmpty = "メールアドレスを入力してください";
     } else if (!isValidEmail(email)) {
@@ -148,25 +162,25 @@ export const Contact: FC = memo(() => {
           <form onSubmit={handleSubmit}>
             <div className="form_item">
               <label className="label">氏名<span className="clr_red">*</span></label>
-              <input type="text" value={firstName} onChange={onChangeFirstName} className="input" placeholder="お名前 姓" />
+              <input type="text" value={firstName} onChange={onChangeFirstName} defaultValue={formData.firstName} className="input" placeholder="お名前 姓" />
               <span className="error">{errorMessages.firstName}</span>
-              <input type="text" value={lastName} onChange={onChangeLastName} className="input" placeholder="お名前 名" />
+              <input type="text" value={lastName} onChange={onChangeLastName} defaultValue={formData.lastName} className="input" placeholder="お名前 名" />
               <span className="error">{errorMessages.lastName}</span>
             </div>
             <div className="form_item">
-              <label className="label">氏名(ふりがな)<span className="clr_red">*</span></label>
-              <input type="text" value={firstNameKana} onChange={onChangeFirstNameKana} className="input" placeholder="フリガナ セイ" />
+              <label className="label">氏名(フリガナ)<span className="clr_red">*</span></label>
+              <input type="text" value={firstNameKana} onChange={onChangeFirstNameKana} defaultValue={formData.firstNameKana} className="input" placeholder="フリガナ セイ" />
               <span className="error">{errorMessages.firstNameKana}</span>
-              <input type="text" value={lastNameKana} onChange={onChangeLastNameKana} className="input" placeholder="フリガナ メイ" />
+              <input type="text" value={lastNameKana} onChange={onChangeLastNameKana} defaultValue={formData.lastNameKana} className="input" placeholder="フリガナ メイ" />
               <span className="error">{errorMessages.lastNameKana}</span>
             </div>
             <div className="form_item">
               <label className="label">会社名</label>
-              <input type="text" value={company} onChange={onChangeCompany} className="input" />
+              <input type="text" value={company} onChange={onChangeCompany} defaultValue={formData.company} className="input" />
             </div>
             <div className="form_item">
               <label className="label">メールアドレス<span className="clr_red">*</span></label>
-              <input type="text" value={email} onChange={onChangeEmail} className="input" placeholder="半角で入力してください" />
+              <input type="text" value={email} onChange={onChangeEmail} defaultValue={formData.email} className="input" placeholder="半角で入力してください" />
               {errorMessages.emailEmpty && <span className="error">{errorMessages.emailEmpty}</span>}
               {errorMessages.emailInvalid && <span className="error">{errorMessages.emailInvalid}</span>}
             </div>
@@ -177,7 +191,7 @@ export const Contact: FC = memo(() => {
             <div className="form_item">
               <label className="label">お問い合わせ種類</label>
               <div className="select_box">
-                <select value={contactType} onChange={onChangeContactType} className="select">
+                <select value={contactType} onChange={onChangeContactType} defaultValue={formData.contactType} className="select">
                   <option value="">選択してください</option>
                   <option value="事業(WEB制作・開発)について">事業(WEB制作・開発)について</option>
                   <option value="事業(オハナスタイル)について">事業(オハナスタイル)について</option>
@@ -190,7 +204,7 @@ export const Contact: FC = memo(() => {
             </div>
             <div className="form_item">
               <label className="label">お問合せ内容<span className="clr_red">*</span></label>
-              <textarea value={content} onChange={onChangeContent} className="text_area"></textarea>
+              <textarea value={content} onChange={onChangeContent} defaultValue={formData.content} className="text_area"></textarea>
               <span className="error">{errorMessages.content}</span>
             </div>
             <div className="contact_box">

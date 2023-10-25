@@ -13,10 +13,12 @@ export const EditThreadBbsReply: FC = memo(() => {
   const { replyId, threadId } = useParams<{ replyId: string, threadId: string }>();
   const navigate = useNavigate();
 
+  const baseURL = process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000";
+
   useEffect(() => {
     const fetchReplyData = async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/thread_bbs_reply/${replyId}`);
+            const response = await axios.get(`${baseURL}/api/thread_bbs_reply/${replyId}`);
             setReplyData(response.data);
         } catch (error) {
             console.log("取得エラー:", error);
@@ -24,13 +26,13 @@ export const EditThreadBbsReply: FC = memo(() => {
     };
 
     fetchReplyData();
-  }, [replyId]);
+  }, [replyId, baseURL]);
 
   const handleEditSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (replyData) {
         try {
-            await axios.patch(`http://127.0.0.1:8000/api/thread_bbs_reply/${replyId}`, replyData);
+            await axios.patch(`${baseURL}/api/thread_bbs_reply/${replyId}`, replyData);
             navigate(`/thread_bbs/${threadId}`);
           } catch (error) {
             console.log("エラー:", error);

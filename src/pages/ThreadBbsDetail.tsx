@@ -19,6 +19,7 @@ export const ThreadBbsDetail: FC = memo(() => {
   const [ formData, setFormData] = useState({ name: '', content: ''});
   const [errorMessages, setErrorMessages] = useState({ name: '', content: '' });
   const navigate = useNavigate();
+  const baseURL = process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -31,10 +32,10 @@ export const ThreadBbsDetail: FC = memo(() => {
   useEffect(() => {
     const fetchThreadDetail = async () => {
       try {
-        const threadResponse = await axios.get(`http://127.0.0.1:8000/api/thread_bbs/${threadId}`);
+        const threadResponse = await axios.get(`${baseURL}/api/thread_bbs/${threadId}`);
         setThread(threadResponse.data);
 
-        const repliesResponse = await axios.get(`http://127.0.0.1:8000/api/thread_bbs_replies?thread_id=${threadId}`);
+        const repliesResponse = await axios.get(`${baseURL}/api/thread_bbs_replies?thread_id=${threadId}`);
         dispatch(setReplies({ threadId: threadId, replies: repliesResponse.data }));
 
       } catch (error) {
@@ -43,7 +44,7 @@ export const ThreadBbsDetail: FC = memo(() => {
     };
   
     fetchThreadDetail();
-  }, [threadId]);
+  }, [threadId, baseURL]);
 
   if (!threadId) {
     return null;
@@ -52,23 +53,30 @@ export const ThreadBbsDetail: FC = memo(() => {
   const handleReplySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setErrorMessages({ name: '', content: '' });
+    const newErrorMessages = { name: '', content: '' };
+    let hasError = false;
 
     if (!formData.name) {
-      setErrorMessages((prevErrors) => ({ ...prevErrors, name: '名前を入力してください' }));
-      return;
+      newErrorMessages.name = '名前を入力してください';
+      hasError = true;
     }
     if (!formData.content) {
-      setErrorMessages((prevErrors) => ({ ...prevErrors, content: '本文を入力してください' }));
+      newErrorMessages.content = '本文を入力してください';
+      hasError = true;
+    }
+
+    setErrorMessages(newErrorMessages);
+
+    if (hasError) {
       return;
     }
 
     try {
-        const response = await axios.post('http://127.0.0.1:8000/api/thread_bbs_reply', {
-            thread_id: threadId,
-            name: formData.name,
-            content: formData.content
-        });
+      const response = await axios.post(`${baseURL}/api/thread_bbs_reply`, {
+        thread_id: threadId,
+        name: formData.name,
+        content: formData.content
+      });  
         dispatch(addReply({ threadId: threadId, reply: response.data.reply }));
         setFormData({ name: '', content: '' });
     } catch (error) {
@@ -82,7 +90,7 @@ export const ThreadBbsDetail: FC = memo(() => {
 
   const handleReplyDelete = async (replyId: number) => {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/thread_bbs_reply/${replyId}`)
+        await axios.delete(`${baseURL}/api/thread_bbs_reply/${replyId}`)
         dispatch(deleteReply({threadId, replyId}));
       } catch (error) {
         console.log('返信削除失敗');
